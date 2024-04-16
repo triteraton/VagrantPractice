@@ -1,2 +1,0 @@
-# VagrantPractice
-Practice with vagrant

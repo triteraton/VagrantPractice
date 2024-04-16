@@ -1,0 +1,22 @@
+Vagrant.configure("2") do |config|
+  config.vm.box_check_update = false
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+  config.hostmanager.manage_guest = true
+  config.hostmanager.ignore_private_ip = false
+  config.hostmanager.include_offline = true
+
+  #App server
+  config.vm.define "VM1" do |vm1|
+    vm1.vm.hostname = "vm1-ubuntu"
+    vm1.vm.box = "hashicorp/bionic64"
+    vm1.vm.network :private_network, ip: "192.168.0.15"
+  end
+
+  #DB server
+  config.vm.define "VM2" do |vm2|
+    vm2.vm.hostname = "vm2-ubuntu"
+    vm2.vm.box = "hashicorp/bionic64"
+    vm2.vm.network :private_network, ip: "192.168.0.16"
+  end
+end
